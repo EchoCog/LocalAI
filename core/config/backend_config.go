@@ -206,6 +206,8 @@ type TemplateConfig struct {
 	JoinChatMessagesByCharacter *string `yaml:"join_chat_messages_by_character"`
 
 	Multimodal string `yaml:"multimodal"`
+
+	JinjaTemplate string `yaml:"jinja_template"`
 }
 
 func (c *BackendConfig) UnmarshalYAML(value *yaml.Node) error {
@@ -433,7 +435,7 @@ func (c *BackendConfig) Validate() bool {
 }
 
 func (c *BackendConfig) HasTemplate() bool {
-	return c.TemplateConfig.Completion != "" || c.TemplateConfig.Edit != "" || c.TemplateConfig.Chat != "" || c.TemplateConfig.ChatMessage != ""
+	return c.TemplateConfig.Completion != "" || c.TemplateConfig.Edit != "" || c.TemplateConfig.Chat != "" || c.TemplateConfig.ChatMessage != "" || c.TemplateConfig.JinjaTemplate != ""
 }
 
 type BackendConfigUsecases int
